@@ -1,0 +1,94 @@
+{
+  "signupUsers": [
+    {
+      "username": "padminim",
+      "fullName": "Padmini Mummidisetty",
+      "mobile": "6301612078",
+      "email": "mail2yellareswari@gmail.com",
+      "password": "Paddu@123",
+      "id": 1
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "dueDate": "2019-11-14",
+      "fullName": "suraj kumar",
+      "address": "amalapuam , 534401",
+      "mobile": "9834567844",
+      "orderTotal": "20000"
+    },
+    {
+      "id": 2,
+      "dueDate": "2022-10-04",
+      "fullName": "Padmini Mummidisetty",
+      "address": "Ayyappa Society,Madhapur, 500081",
+      "mobile": "8989089890",
+      "orderTotal": "5000"
+    },
+    {
+      "id": 3,
+      "dueDate": "2022-12-05",
+      "fullName": "Divya Kolla",
+      "address": "jublihills,hyd 543546",
+      "mobile": "7346736557",
+      "orderTotal": "63242"
+    },
+    {
+      "id": 4,
+      "dueDate": "02-12-2021",
+      "fullName": "NavTech pvt",
+      "address": "gachibowli,hyd 500083",
+      "orderTotal": "70000",
+      "mobile": "9835748844"
+    },
+    {
+      "id": 5,
+      "dueDate": "02-12-2021",
+      "fullName": "avinash peruri",
+      "address": "kailasagiri vizag , 500431",
+      "orderTotal": "20000",
+      "mobile": "6478342838"
+    },
+    {
+      "id": 6,
+      "dueDate": "12-05-2022",
+      "fullName": "madhu singh",
+      "address": "bangalore enclave ,403484",
+      "orderTotal": "34300",
+      "mobile": "9845637363"
+    },
+    {
+      "id": 7,
+      "dueDate": "2022-12-05",
+      "fullName": "aishu molleti",
+      "address": "vth apartments ylm, 500432",
+      "mobile": "9403355633",
+      "orderTotal": "1500"
+    },
+    {
+      "id": 8,
+      "dueDate": "2022-05-13",
+      "fullName": "Eswari",
+      "address": "tuni",
+      "mobile": "9382432428",
+      "orderTotal": "20000"
+    },
+    {
+      "id": 11,
+      "dueDate": "2022-05-10",
+      "fullName": "joodu",
+      "address": "yes",
+      "mobile": "6515115515",
+      "orderTotal": "123"
+    },
+    {
+      "id": 12,
+      "dueDate": "2022-05-04",
+      "fullName": "Testing",
+      "address": "hyd",
+      "mobile": "9345739873",
+      "orderTotal": "2000"
+    }
+  ]
+}

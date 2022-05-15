@@ -1,0 +1,156 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <span class="example-spacer">NavTech Online Shopping Mart</span>
+    <button mat-icon-button class="example-icon" matTooltip="log out" (click)="logOut()">
+        <mat-icon>person</mat-icon>
+    </button>
+
+</mat-toolbar>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-4">
+            <mat-form-field appearance="standard">
+                <mat-label>Filter</mat-label>
+                <input matInput (keyup)="applyFilter($event)" placeholder="Search Here.." #input>
+            </mat-form-field>
+        </div>
+        <div class="col-md-2 offset-md-6" style="padding-top:20px;padding-left: 60px;">
+            <button mat-raised-button color="success" (click)="open(content,false)">Place New Order</button>
+        </div>
+    </div>
+    <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" matSort>
+
+            <ng-container matColumnDef="Order No">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Order No </th>
+                <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Due Date">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Due Date </th>
+                <td mat-cell *matCellDef="let row"> {{row.dueDate | date:'dd-MM-yyyy'}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="Customer Name">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Customer Name </th>
+                <td mat-cell *matCellDef="let row"> {{row.fullName}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Address">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Address </th>
+                <td mat-cell *matCellDef="let row"> {{row.address}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="mobile">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Mobile </th>
+                <td mat-cell *matCellDef="let row"> {{row.mobile}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Order Total">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Order Total </th>
+                <td mat-cell *matCellDef="let row"> $ {{row.orderTotal}} </td>
+            </ng-container>
+            <ng-container matColumnDef="Actions">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions </th>
+                <td mat-cell *matCellDef="let row">
+                    <button mat-icon-button color="primary" matTooltip="Edit" (click)="open(content,row)">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    <button mat-icon-button color="warn" matTooltip="Delete" (click)="delete(delContent,row.id)">
+                        <mat-icon>delete_outline</mat-icon>
+                    </button>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+            <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+            </tr>
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[7, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+    </div>
+</div>
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h2 class="modal-title">Add New Order</h2>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="addOrderForm" style="border : 3px solid #1b0679; padding: 10px;">
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="full_name">Full Name</label>
+                    <input type="text" class="form-control" formControlName="fullName" required>
+                    <div *ngIf="f.fullName.invalid && (f.fullName.dirty || f.fullName.touched)" class="alert">
+                        <div class="text-danger" *ngIf="f.fullName.errors?.required">*FullName is required</div>
+                        <div class="text-danger" *ngIf="f.fullName.errors?.pattern">*Invalid fullName</div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="mobile">Mobile No</label>
+                    <input type="text" class="form-control" formControlName="mobile" name="mobile" maxlength=10>
+                    <div *ngIf="f.mobile.invalid && (f.mobile.dirty || f.mobile.touched)" class="alert">
+                        <div class="text-danger" *ngIf="f.mobile.errors?.required">*Mobile Number is required</div>
+                        <div class="text-danger" *ngIf="f.mobile.errors?.pattern">*Invalid mobile number</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-md-6 mb-3">
+                    <label for="orderTotal">Order Total</label>
+                    <input type="text" class="form-control" formControlName="orderTotal" name="orderTotal">
+                    <div *ngIf="f.orderTotal.invalid && (f.orderTotal.dirty || f.orderTotal.touched)" class="alert">
+                        <div class="text-danger" *ngIf="f.orderTotal.errors?.required">*orderTotal is required</div>
+                        <div class="text-danger" *ngIf="f.orderTotal.errors?.pattern">*Invalid Total</div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="duedate">Due Date</label>
+                    <input type="date" class="form-control" formControlName="dueDate" name="dueDate" required>
+                    <div *ngIf="f.dueDate.invalid && (f.dueDate.dirty || f.dueDate.touched)" class="alert">
+                        <div class="text-danger" *ngIf="f.dueDate.errors?.required">*dueDate is required</div>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="address">Address</label>
+                    <textarea type="text" class="form-control" formControlName="address" placeholder="enter address"
+                        name="address"></textarea>
+                    <div *ngIf="f.address.invalid && (f.address.dirty || f.address.touched)" class="alert">
+                        <div class="text-danger" *ngIf="f.address.errors?.required">*Address is required</div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-danger" ngbAutofocus (click)="modal.close('Save click')">Cancel</button>
+        <button type="button" class="btn btn-primary" [disabled]="!addOrderForm.valid"
+            (click)="addNewProduct()">{{actionButton}}</button>
+    </div>
+</ng-template>
+
+<ng-template #delContent let-modal>
+    <div class="modal-header">
+        <h2 class="modal-title">Confirmation</h2>
+    </div>
+    <div class="modal-body">
+        <h3>Are you sure ,you want to delete this ?</h3>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="modal.close('Save click')">Cancel</button>
+        <button type="submit" class="btn btn-primary" (click)="confirm()" style="margin-left:20px;">Confirm</button>
+    </div>
+</ng-template>

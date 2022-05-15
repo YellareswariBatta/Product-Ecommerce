@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="text-center">
+                    <h1>Login</h1>
+                    <h4>please enter username and password</h4>
+                </div>
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                    <div class="mb-3">
+                      <label for="username" class="form-label">Username</label>
+                      <input type="text" class="form-control" id="username" formControlName="username">
+                      <div *ngIf="f.username.invalid && (f.username.dirty || f.username.touched)" class="alert">
+                          <div style="color: white;" *ngIf="f.username.errors?.required">*Username is required</div>
+                          <div style="color: white;" *ngIf="f.username.errors?.pattern">*only alphanumeric is allowed</div>
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <label for="password" class="form-label">Password</label>
+                      <input type="password" class="form-control" id="password" formControlName="password">
+                      <div *ngIf="f.password.invalid && (f.password.dirty || f.password.touched)" class="alert">
+                        <div style="color: white;" *ngIf="f.password.errors?.required">*Password is required</div>
+                    </div>
+                    
+                    </div>
+                    <div class="mb-3 form-check">
+                      <input type="checkbox" class="form-check-input" id="exampleCheck1" formControlName="check">
+                      <label class="form-check-label" for="exampleCheck1">Remember Me</label>
+                    </div>
+                    <div class="text-center">
+                    <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Login</button>
+                    </div>
+                  </form>
+                  <a style="color: white; margin-top: 10px;" routerLink="/signup">New User ? click to Register</a>
+            </div>
+        </div>
+    </div>
+</div>

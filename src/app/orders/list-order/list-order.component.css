@@ -1,0 +1,40 @@
+.example-spacer{
+    flex : 1 1 auto;
+}
+
+.mat-success {
+    background-color: green;
+    color: #fff;
+}
+
+table {
+    width: 100%;
+  }
+  
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  td, th {
+    width: 5%;
+}
+
+.container{
+    max-width: 1400px;
+    margin:0 auto;
+    padding-top:40px;
+
+}
+::ng-deep snack-bar-container.green-snackbar{
+    padding: 20px;
+    background:green;
+    color:white;
+}
+
+h3{
+    margin-left:30px;
+}
+.text-center{
+    padding-top:10px;;
+}
